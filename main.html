@@ -22,31 +22,50 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+    
+    <!--Drop Down Icon-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menuclose" />
+
+    <!--Close Button-->
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=close" /> -->
+
     <!-- Tab Icon -->
     <link rel="icon" type="image/esu-icon" href="/images/favicon.ico">
     <title>ESU</title>
 </head>
 <body>
+    <!--Nav bar-->
+    <div id="drop-down-options">
+        <div id="drop-down-backdrop">
+            <span class="material-symbols-outlined close-drop-down" onclick="closeMenu()">close</span>
+            <a onclick="">Overview</a>
+            <a onclick="">About Us</a>
+            <a onclick="">E-Board</a>
+            <a onclick="">Socials</a>
+        </div>
+    </div>
+    <nav>
+        <div id="title">
+            <h1>
+                Ecuadorian Student Union <br>
+                of Hunter College
+            </h1>
+        </div>
+
+        <div class="nav-buttons">
+            <a onclick="scrollToSection(0)">Overview</a>
+            <a onclick="scrollToSection(1)">About Us</a>
+            <a onclick="scrollToSection(2)">E-Board</a>
+            <a onclick="scrollToSection(3)">Socials</a>
+        </div>
+
+        <div id="drop-down-icon">
+            <span class="material-symbols-outlined drop-down-menu" onclick="openMenu()">menu</span>
+
+        </div>
+    </nav>
     <!--Overview-->
     <div class="section-container" style="background-color: #ffde59;">
-        <!--Nav bar-->
-        <nav>
-            <div id="title">
-                <h1>
-                    Ecuadorian Student Union <br>
-                    of Hunter College
-                </h1>
-            </div>
-
-            <div id="nav-buttons">
-                <a href="">Overview</a>
-                <a href="">About Us</a>
-                <a href="">E-Board</a>
-                <a href="">Socials</a>
-            </div>
-        </nav>
-
-
         <section id="slideshow-container">
 
             <div class="card-wrapper">
@@ -71,6 +90,8 @@
                 </div>
             </div>
 
+            <!-- <div class="overlay"></div> -->
+
             <p id="welcome-msg">
                 Welcome to the official website for the Ecuadorian
                 Student Union at Hunter College! We welcome 
@@ -79,8 +100,6 @@
             </p>
             
         </section>
-        <br>
-            
     </div>
 
     <!--About Us-->
