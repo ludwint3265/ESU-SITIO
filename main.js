@@ -1,7 +1,7 @@
 
 // Slideshow
 
-//**
+// **
 // Issues:
 // - When Adjusting the window size the slidwshow adds more
 // elements causing more repeated images near the end of the 
@@ -11,7 +11,9 @@
 // 
 // 
 // 
-// **//
+// 
+// 
+// **
 
 function slideshowAnimation()
 {
@@ -91,6 +93,61 @@ function slideshowAnimation()
   }
 }
 
+function adjustAnimation()
+{
+  const cardWrapper = document.querySelector('.card-wrapper')
+  const widthToScroll = cardWrapper.children[0].offsetWidth
+  const cardBounding = cardWrapper.getBoundingClientRect()
+  let currScroll = 0
+  let initPos = 0
+  let clicked = false
+  
+  const cardImageAndLink = cardWrapper.querySelectorAll('img, a')
+  cardImageAndLink.forEach(item=> {
+    item.setAttribute('draggable', false)
+  })
+  
+  cardWrapper.classList.add('no-smooth')
+  cardWrapper.scrollLeft = cardWrapper.offsetWidth
+  cardWrapper.classList.remove('no-smooth') 
+  
+  cardWrapper.onmousedown = function(e) {
+    initPos = e.clientX - cardBounding.left
+    currScroll = cardWrapper.scrollLeft
+    clicked = true
+  }
+  
+  cardWrapper.onmousemove = function(e) {
+    if(clicked) {
+      const xPos = e.clientX - cardBounding.left
+      cardWrapper.scrollLeft = currScroll + -(xPos - initPos)
+    }
+  }
+  
+  let autoScroll
+  
+  cardWrapper.onscroll = function() {
+    if(cardWrapper.scrollLeft === 0) {
+      cardWrapper.classList.add('no-smooth')
+      cardWrapper.scrollLeft = cardWrapper.scrollWidth - (2 * cardWrapper.offsetWidth)
+      cardWrapper.classList.remove('no-smooth')
+    } else if(cardWrapper.scrollLeft === cardWrapper.scrollWidth - cardWrapper.offsetWidth) {
+      cardWrapper.classList.add('no-smooth')
+      cardWrapper.scrollLeft = cardWrapper.offsetWidth
+      cardWrapper.classList.remove('no-smooth')
+    }
+  
+    if(autoScroll) {
+      clearTimeout(autoScroll)
+    }
+  
+    autoScroll = setTimeout(()=> {
+      cardWrapper.classList.remove('no-smooth')
+      cardWrapper.scrollLeft += widthToScroll
+    }, 1000)
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   slideshowAnimation();
 });
@@ -98,10 +155,11 @@ document.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("resize", function() {
   if (window.innerWidth < 1175)
   {
-    slideshowAnimation();
+    adjustAnimation();
   }
 });
 
+// removes mobile menu when screen size exceeds the width limit (1175)
 window.addEventListener("resize", function() {
   if (window.innerWidth > 1175)
   {
@@ -120,10 +178,29 @@ function closeMenu()
   document.getElementById("drop-down-options").style.display = "none";
 }
 
+
+// Scrolls a selected part of the page
 function scrollToSection(sectionNum) {
   const sectionList = document.querySelectorAll(".section-container");
 
   section = sectionList[sectionNum]
 
   section.scrollIntoView({ behavior: "smooth" });
+
+  if (document.getElementById("drop-down-options").style.display != "none")
+  {
+    document.getElementById("drop-down-options").style.display = "none";
+  }
 }
+
+// Changes Nav colors when Scroling to the bottom
+window.addEventListener('scroll', function() {
+  const navbar = document.getElementsByTagName("nav")[0];
+  const scrollTop = document.documentElement.scrollTop + 1000;
+
+  if (scrollTop > document.documentElement.scrollHeight) {
+    navbar.style.color = 'black';
+  } else {
+    navbar.style.color = 'white';
+  }
+});

@@ -13,6 +13,8 @@ nav
     background-color: transparent;
     height: 10%;
     width: 100%;
+    color: white;
+    z-index: 5;
     /* border: 1px solid black; */
 }
 
@@ -34,7 +36,6 @@ nav
     text-decoration: none;
     font-weight: 600;
     font-size: 20px;
-    color: black;
     width: 125px;
     cursor: pointer;
     /* border: 1px solid black; */
@@ -64,7 +65,7 @@ nav
     position: absolute;
     text-align: center;
     color: #FFF;
-    width: 30%;
+    width: 40%;
     font-size: 25px;
     font-weight: 600;
     z-index: 3;
@@ -75,9 +76,9 @@ nav
     background-color: black;
     opacity: 0%;
     width: 100%;
-    height: inherit;
-    position: absolute;
-    z-index: 2;
+    height: 100vh;
+    position:absolute;
+    z-index: 3;
 }
 
 .card-wrapper {
@@ -133,18 +134,31 @@ nav
     display: none;
 }
 
+
 #drop-down-backdrop
 {
     position: fixed;
     display: flex;
     flex-direction: column;
-    background-color: black;
-    color: white;
+    background-color: rgb(241, 228, 228);
+    color: gray;
+    font-weight: 600;
+
     width: 100%;
     height: 100%;
     z-index: 10;
     align-items: flex-start;
     justify-content: space-evenly;
+    animation: slideIn 0.4s ease-in;
+}
+
+#drop-down-backdrop > a
+{
+    font-size: 25px;
+    font-weight: 600;
+    width: 200px;
+    margin: 25px;
+    cursor: pointer;
 }
 
 .close-drop-down
@@ -152,26 +166,46 @@ nav
     position: absolute;
     right: 0;
     top: 0;
-    font-size: 50px !important;
+    font-size: 40px !important;
     margin: 25px;
     cursor: pointer;
 }
 
-#drop-down-backdrop > a
+.close-drop-down:hover
 {
-    border: 1px solid white;
-    width: 200px;
-    padding: 10px;
+    color: #CE1126;
+}
+
+@keyframes slideIn {
+    from {
+      transform: translateX(100%); 
+      opacity: 0;                  
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+      transform: translateX(0); 
+      opacity: 0;                  
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 1;
+    }
 }
 
 
-@media screen and (max-width: 575px) {
+/* @media screen and (max-width: 575px) {
     .card-wrapper {
         margin-left: -16px;
         width: 100vw;
         grid-auto-columns: 100%;
     }
-}
+} */
 
 
 @media (max-width: 1175px){
@@ -182,6 +216,15 @@ nav
     #drop-down-icon
     {
         display: block;
+    }
+    #title
+    {
+        font-size: 14px;
+    }
+    #welcome-msg
+    {
+        width: 80%;
+        font-size: 18px;
     }
 }
 
