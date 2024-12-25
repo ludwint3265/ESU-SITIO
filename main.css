@@ -176,6 +176,41 @@ nav
     color: #CE1126;
 }
 
+.aboutus-div
+{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 100%;
+    height: inherit;
+}
+
+.aboutus-description-div
+{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    width: 50%;
+}
+
+#aboutus-description
+{
+    margin: 20px;
+    text-align: center;
+}
+
+.aboutus-header
+{
+    padding: 0%;
+    margin: 20px;
+    font-size: 30px;
+}
+
+.aboutus-slide-show
+{
+    width: 50%;
+}
+
 @keyframes slideIn {
     from {
       transform: translateX(100%); 

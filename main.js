@@ -15,9 +15,8 @@
 // 
 // **
 
-function slideshowAnimation()
+function slideshowAnimation(cardWrapper)
 {
-  const cardWrapper = document.querySelector('.card-wrapper')
   const cardWrapperChildren = Array.from(cardWrapper.children)
   const widthToScroll = cardWrapper.children[0].offsetWidth
   // const arrowPrev = document.querySelector('.arrow.prev')
@@ -93,9 +92,8 @@ function slideshowAnimation()
   }
 }
 
-function adjustAnimation()
+function adjustAnimation(cardWrapper)
 {
-  const cardWrapper = document.querySelector('.card-wrapper')
   const widthToScroll = cardWrapper.children[0].offsetWidth
   const cardBounding = cardWrapper.getBoundingClientRect()
   let currScroll = 0
@@ -149,13 +147,28 @@ function adjustAnimation()
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  slideshowAnimation();
+  let cardWrapper = document.querySelectorAll(".card-wrapper");
+  cardWrapper.forEach(element => {
+    slideshowAnimation(element);
+  });
 });
 
 window.addEventListener("resize", function() {
   if (window.innerWidth < 1175)
   {
-    adjustAnimation();
+    let cardWrapper = document.querySelectorAll(".card-wrapper");
+    cardWrapper.forEach(element => {
+      console.log(element);
+      adjustAnimation(element);
+    });
+  }
+  else
+  {
+    let cardWrapper = document.querySelectorAll(".card-wrapper");
+    cardWrapper.forEach(element => {
+      console.log(element);
+      adjustAnimation(element);
+    });
   }
 });
 
