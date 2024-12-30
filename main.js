@@ -206,14 +206,3 @@ function scrollToSection(sectionNum) {
   }
 }
 
-// Changes Nav colors when Scroling to the bottom
-window.addEventListener('scroll', function() {
-  const navbar = document.getElementsByTagName("nav")[0];
-  const scrollTop = document.documentElement.scrollTop + 1000;
-
-  if (scrollTop > document.documentElement.scrollHeight) {
-    navbar.style.color = 'black';
-  } else {
-    navbar.style.color = 'white';
-  }
-});
