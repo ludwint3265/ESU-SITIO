@@ -16,6 +16,9 @@ nav
     color: white;
     z-index: 5;
     /* border: 1px solid black; */
+    /* backdrop-filter: blur(8px); */
+    /* background-color: rgba(255, 255, 255, 0.3); */
+    /* border: 1px solid black; */
 }
 
 #title
@@ -87,12 +90,14 @@ nav
     grid-auto-columns: calc((100%));
     height: inherit;
     overflow: hidden;
+    margin-top: 8.25%;
     padding: 24px;
     gap: 24px;
     scroll-snap-type: x mandatory;
     scroll-padding-inline: 24px;
     scroll-behavior: smooth;
     scrollbar-width: none;
+    /* border: 1px solid black; */
 }
 
 .card-wrapper::-webkit-scrollbar {
@@ -218,6 +223,7 @@ nav
     align-items: center;
     width: 100%;
     height: auto;
+    color: #fff;
 }
 
 .eboard-header
@@ -242,12 +248,30 @@ nav
     height: 80vh;
 }
 
-.ebaord-member
+.eboard-member
 {
-    width: 200px;
-    height: 200px;
-    border: 10px solid black;
-    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    /* border: 10px solid black; */
+    /* background-color: #FFF; */
+}
+
+.eboard-member > img
+{
+    object-fit: cover;
+    width: 100px;
+
+}
+
+.mobile-slide-show
+{
+    border: 1px solid black;
+    height: inherit;
+    width: inherit;
 }
 
 .socials-header
@@ -395,6 +419,15 @@ nav
         width: 80%;
         font-size: 18px;
     }
+    .mobile-slide-show
+    {
+        display: block;
+    }
+
+    .eboard-display > .eboard-member
+    {
+        display: none;
+    }
 }
 
 @media (min-width: 1175px){
@@ -403,6 +436,14 @@ nav
         display: block;
     }
     #drop-down-icon
+    {
+        display: none;
+    }
+    .eboard-display > .eboard-member
+    {
+        display: block;
+    }
+    .mobile-slide-show
     {
         display: none;
     }

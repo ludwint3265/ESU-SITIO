@@ -149,6 +149,7 @@ function adjustAnimation(cardWrapper)
 document.addEventListener("DOMContentLoaded", () => {
   let cardWrapper = document.querySelectorAll(".card-wrapper");
   cardWrapper.forEach(element => {
+    console.log(element);
     slideshowAnimation(element);
   });
 });
