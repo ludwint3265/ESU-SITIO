@@ -11,7 +11,7 @@ nav
     justify-content: space-evenly;
     align-items: center;
     background-color: #FCD116;
-    height: 7.5%;
+    height: 8%;
     width: 100%;
     color: #ade8f2;
     z-index: 5;
@@ -240,12 +240,21 @@ nav
 .eboard-display
 {
     display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
+    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    width: 75%;
-    height: 80vh;
+    width: 95%;
+    height: 75vh;
+}
+
+.eboard-members-container
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: inherit;
+    height: auto;
+
 }
 
 .eboard-member
@@ -264,15 +273,59 @@ nav
 {
     object-fit: cover;
     width: 100px;
-
 }
+
+
 
 .mobile-slide-show
 {
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: inherit;
+    width: 100%;
+}
+
+.mySlides 
+{
+    display:none;
     height: inherit;
     width: inherit;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
+
+.slideshow-button
+{
+    background: transparent;
+    color: white;
+    border: none;
+    height: 25px;
+    width: 25px;
+}
+
+.left-button
+{
+    position: absolute;
+    left: 0;
+    margin-left: 20px;
+}
+
+.right-button
+{
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+}
+
+.slideshow-button:hover
+{
+    cursor: pointer;
+}
+
 
 .socials-header
 {
@@ -419,18 +472,44 @@ nav
         width: 80%;
         font-size: 18px;
     }
+    .eboard-header > h1
+    {
+        font-size: 25px;
+    }
     .mobile-slide-show
     {
-        display: block;
+        display: flex;
     }
 
-    .eboard-display > .eboard-member
+    .eboard-display > .eboard-members-container
     {
         display: none;
+    }
+    .eboard-member
+    {
+        height: 150px;
+        width: 150px;
+    }
+    .eboard-name
+    {
+        font-size: 25px;
+        margin: 5px;
+    }
+    .eboard-member > h2
+    {
+        font-size: 15px;
+    }
+    .eboard-member > img
+    {
+        width: 75px;
     }
     .socials > .socials-container > a > i
     {
         font-size: 50px;
+    }
+    .socials-container
+    {
+        font-size: 12px;
     }
     #social-media-paragraph
     {
@@ -447,9 +526,9 @@ nav
     {
         display: none;
     }
-    .eboard-display > .eboard-member
+    .eboard-display > .eboard-members-container
     {
-        display: block;
+        display: flex;
     }
     .mobile-slide-show
     {

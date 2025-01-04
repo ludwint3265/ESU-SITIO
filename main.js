@@ -152,6 +152,8 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(element);
     slideshowAnimation(element);
   });
+
+  showDivs(slideIndex);
 });
 
 window.addEventListener("resize", function() {
@@ -210,7 +212,7 @@ function sectionActions(index, nav)
 
 window.addEventListener("scroll", function() {
   const sections = document.querySelectorAll('.section-container'); // Get all sections
-  const navHeight = window.innerHeight * 0.075;
+  const navHeight = window.innerHeight * 0.0775;
   const scrollPosition = window.scrollY + navHeight;
   const viewportHeight = window.innerHeight;
   const nav = document.getElementsByTagName("nav")[0];
@@ -243,14 +245,41 @@ function closeMenu()
 // Scrolls a selected part of the page
 function scrollToSection(sectionNum) {
   const sectionList = document.querySelectorAll(".section-container");
+  const navHeight = window.innerHeight * 0.075;
 
-  section = sectionList[sectionNum]
+  const section = sectionList[sectionNum];
+  const sectionTop = section.offsetTop; // Get the section's top position relative to the document
+  const offsetPosition = sectionTop - navHeight; // Adjust for the navigation bar height
 
-  section.scrollIntoView({ behavior: "smooth" });
+  // Smooth scroll to the calculated position
+  window.scrollTo({
+    top: offsetPosition,
+    behavior: "smooth"
+  });
 
-  if (document.getElementById("drop-down-options").style.display != "none")
-  {
-    document.getElementById("drop-down-options").style.display = "none";
+  // Hide the dropdown menu if it is visible
+  const dropdown = document.getElementById("drop-down-options");
+  if (dropdown.style.display !== "none") {
+    dropdown.style.display = "none";
   }
 }
 
+
+
+
+var slideIndex = 1;
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "flex";  
+}
