@@ -180,6 +180,53 @@ window.addEventListener("resize", function() {
   }
 });
 
+function sectionActions(index, nav)
+{
+  const sectionAction = [
+    () => {
+      console.log('Section 1 in view')
+      nav.style.background = "#FCD116";
+    },
+    () => {
+      console.log('Section 2 in view')
+      nav.style.background = "#003893";
+    },
+    () => {
+      console.log('Section 3 in view')
+      nav.style.background = "#CE1126";
+    },
+    () => {
+      console.log('Section 4 in view')
+      nav.style.background = "transparent"
+    }
+  ];
+
+  sectionAction[index]()
+
+}
+
+
+
+window.addEventListener("scroll", function() {
+  const sections = document.querySelectorAll('.section-container'); // Get all sections
+  const navHeight = window.innerHeight * 0.075;
+  const scrollPosition = window.scrollY + navHeight;
+  const viewportHeight = window.innerHeight;
+  const nav = document.getElementsByTagName("nav")[0];
+    
+  sections.forEach((section, index) => {
+    const sectionTop = section.offsetTop;
+    const sectionBottom = sectionTop + viewportHeight;
+
+    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+        // Execute the action for the current section
+        sectionActions(index, nav);
+    }
+  });
+
+
+});
+
 
 function openMenu()
 {
